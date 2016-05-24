@@ -80,3 +80,5 @@ c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\M
 c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\obj\Debug\WeatherApp.csprojResolveAssemblyReference.cache
 c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\obj\Debug\WeatherApp.dll
 c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\obj\Debug\WeatherApp.pdb
+c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\WeatherApp.Models.dll
+c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\WeatherApp.Models.pdb
