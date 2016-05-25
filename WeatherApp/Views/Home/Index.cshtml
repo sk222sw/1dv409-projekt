@@ -1,4 +1,6 @@
-﻿@{
+﻿@Model = WeatherApp.Models.Weather
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -7,10 +9,12 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-    </div>
+    
+    @foreach (var item in Model)
+    {
+        <div>
+            @item.Temperature
+        </div>
+    }
+
 </div>

@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Forecast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Weather.cs" />
     <Compile Include="WebServices\WeatherWebService.cs" />
   </ItemGroup>
   <ItemGroup>
