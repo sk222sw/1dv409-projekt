@@ -31,3 +31,7 @@ c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp.Model
 c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp.Models\obj\Debug\WeatherApp.Models.csprojResolveAssemblyReference.cache
 c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp.Models\obj\Debug\WeatherApp.Models.dll
 c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp.Models\obj\Debug\WeatherApp.Models.pdb
+C:\Users\Sonny\Documents\Visual Studio 2015\Projects\WeatherApp\WeatherApp.Models\bin\EntityFramework.dll
+C:\Users\Sonny\Documents\Visual Studio 2015\Projects\WeatherApp\WeatherApp.Models\bin\EntityFramework.SqlServer.dll
+C:\Users\Sonny\Documents\Visual Studio 2015\Projects\WeatherApp\WeatherApp.Models\bin\EntityFramework.xml
+C:\Users\Sonny\Documents\Visual Studio 2015\Projects\WeatherApp\WeatherApp.Models\bin\EntityFramework.SqlServer.xml

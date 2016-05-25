@@ -9,10 +9,15 @@ namespace WeatherApp.Controllers
 {
     public class HomeController : Controller
     {
+        private WeatherEntities _context = new WeatherEntities();
+
         public ActionResult Index()
         {
-            var test = new Test();
-            return View(test);
+            var model = _context.Forecasts.ToList();
+            //var weather = new Models.WebServices.WeatherWebService();
+            //weather.GetWeather("kalmar");
+            //var test = new Test();
+            return View(model);
         }
     }
 }
