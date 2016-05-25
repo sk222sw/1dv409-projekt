@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="WeatherApp.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="WeatherModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Forecast">
           <Key>
             <PropertyRef Name="id" />
@@ -23,16 +23,14 @@
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="WeatherAppModelsStoreContainer">
+        <EntityContainer Name="WeatherModelStoreContainer">
           <EntitySet Name="Forecast" EntityType="Self.Forecast" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="WeatherApp.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="WeatherEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Forecasts" EntityType="WeatherApp.Models.Forecast" />
-        </EntityContainer>
+      <Schema Namespace="WeatherModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Forecast">
           <Key>
             <PropertyRef Name="id" />
@@ -43,36 +41,39 @@
           <Property Name="DayThreeTemp" Type="Int32" Nullable="false" />
           <Property Name="DayFourTemp" Type="Int32" Nullable="false" />
           <Property Name="DayFiveTemp" Type="Int32" Nullable="false" />
-          <Property Name="DayOneWeather" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DayTwoWeather" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DayThreeWeather" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DayFourWeather" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DayFiveWeather" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DayOneWeather" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DayTwoWeather" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DayThreeWeather" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DayFourWeather" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DayFiveWeather" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="City" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
+        <EntityContainer Name="WeatherAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Forecasts" EntityType="Self.Forecast" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WeatherAppModelsStoreContainer" CdmEntityContainer="WeatherEntities">
+        <EntityContainerMapping StorageEntityContainer="WeatherModelStoreContainer" CdmEntityContainer="WeatherAppEntities">
           <EntitySetMapping Name="Forecasts">
-            <EntityTypeMapping TypeName="WeatherApp.Models.Forecast">
+            <EntityTypeMapping TypeName="WeatherModel.Forecast">
               <MappingFragment StoreEntitySet="Forecast">
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="DayFiveWeather" ColumnName="DayFiveWeather" />
-                <ScalarProperty Name="DayFourWeather" ColumnName="DayFourWeather" />
-                <ScalarProperty Name="DayThreeWeather" ColumnName="DayThreeWeather" />
-                <ScalarProperty Name="DayTwoWeather" ColumnName="DayTwoWeather" />
-                <ScalarProperty Name="DayOneWeather" ColumnName="DayOneWeather" />
-                <ScalarProperty Name="DayFiveTemp" ColumnName="DayFiveTemp" />
-                <ScalarProperty Name="DayFourTemp" ColumnName="DayFourTemp" />
-                <ScalarProperty Name="DayThreeTemp" ColumnName="DayThreeTemp" />
-                <ScalarProperty Name="DayTwoTemp" ColumnName="DayTwoTemp" />
-                <ScalarProperty Name="DayOneTemp" ColumnName="DayOneTemp" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="DayOneTemp" ColumnName="DayOneTemp" />
+                <ScalarProperty Name="DayTwoTemp" ColumnName="DayTwoTemp" />
+                <ScalarProperty Name="DayThreeTemp" ColumnName="DayThreeTemp" />
+                <ScalarProperty Name="DayFourTemp" ColumnName="DayFourTemp" />
+                <ScalarProperty Name="DayFiveTemp" ColumnName="DayFiveTemp" />
+                <ScalarProperty Name="DayOneWeather" ColumnName="DayOneWeather" />
+                <ScalarProperty Name="DayTwoWeather" ColumnName="DayTwoWeather" />
+                <ScalarProperty Name="DayThreeWeather" ColumnName="DayThreeWeather" />
+                <ScalarProperty Name="DayFourWeather" ColumnName="DayFourWeather" />
+                <ScalarProperty Name="DayFiveWeather" ColumnName="DayFiveWeather" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="City" ColumnName="City" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -90,7 +91,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

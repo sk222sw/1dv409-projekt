@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WeatherApp.Models;
+using WeatherApp.Models.DataModels;
 
 namespace WeatherApp.Controllers
 {
     public class HomeController : Controller
     {
-        private WeatherEntities _context = new WeatherEntities();
+        private WeatherAppEntities _context = new WeatherAppEntities();
 
         public ActionResult Index()
         {

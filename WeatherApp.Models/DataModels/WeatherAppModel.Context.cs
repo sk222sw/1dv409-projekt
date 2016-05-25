@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WeatherApp.Models
+namespace WeatherApp.Models.DataModels
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WeatherEntities : DbContext
+    public partial class WeatherAppEntities : DbContext
     {
-        public WeatherEntities()
-            : base("name=WeatherEntities")
+        public WeatherAppEntities()
+            : base("name=WeatherAppEntities")
         {
         }
     
