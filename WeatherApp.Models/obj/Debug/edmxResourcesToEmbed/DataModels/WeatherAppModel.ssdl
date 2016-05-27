@@ -15,7 +15,7 @@
     <Property Name="DayThreeWeather" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DayFourWeather" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DayFiveWeather" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
     <Property Name="City" Type="varchar" MaxLength="200" Nullable="false" />
   </EntityType>
   <EntityContainer Name="WeatherModelStoreContainer">

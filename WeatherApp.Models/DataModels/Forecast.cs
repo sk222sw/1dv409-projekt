@@ -25,7 +25,7 @@ namespace WeatherApp.Models
         public string DayThreeWeather { get; set; }
         public string DayFourWeather { get; set; }
         public string DayFiveWeather { get; set; }
-        public System.DateTime CreatedAt { get; set; }
+        public System.DateTime LastUpdate { get; set; }
         public string City { get; set; }
     }
 }

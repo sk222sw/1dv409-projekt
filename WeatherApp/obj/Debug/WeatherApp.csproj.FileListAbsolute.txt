@@ -82,3 +82,13 @@ c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\obj\D
 c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\obj\Debug\WeatherApp.pdb
 c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\WeatherApp.Models.dll
 c:\users\sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\WeatherApp.Models.pdb
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Microsoft.Practices.Unity.dll
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Unity.Mvc5.dll
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Microsoft.Practices.Unity.xml
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\Sonny\documents\visual studio 2015\Projects\WeatherApp\WeatherApp\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml

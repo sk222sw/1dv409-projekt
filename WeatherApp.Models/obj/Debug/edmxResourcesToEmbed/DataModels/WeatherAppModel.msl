@@ -4,19 +4,19 @@
     <EntitySetMapping Name="Forecasts">
       <EntityTypeMapping TypeName="WeatherModel.Forecast">
         <MappingFragment StoreEntitySet="Forecast">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="DayOneTemp" ColumnName="DayOneTemp" />
-          <ScalarProperty Name="DayTwoTemp" ColumnName="DayTwoTemp" />
-          <ScalarProperty Name="DayThreeTemp" ColumnName="DayThreeTemp" />
-          <ScalarProperty Name="DayFourTemp" ColumnName="DayFourTemp" />
-          <ScalarProperty Name="DayFiveTemp" ColumnName="DayFiveTemp" />
-          <ScalarProperty Name="DayOneWeather" ColumnName="DayOneWeather" />
-          <ScalarProperty Name="DayTwoWeather" ColumnName="DayTwoWeather" />
-          <ScalarProperty Name="DayThreeWeather" ColumnName="DayThreeWeather" />
-          <ScalarProperty Name="DayFourWeather" ColumnName="DayFourWeather" />
-          <ScalarProperty Name="DayFiveWeather" ColumnName="DayFiveWeather" />
-          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="DayFiveWeather" ColumnName="DayFiveWeather" />
+          <ScalarProperty Name="DayFourWeather" ColumnName="DayFourWeather" />
+          <ScalarProperty Name="DayThreeWeather" ColumnName="DayThreeWeather" />
+          <ScalarProperty Name="DayTwoWeather" ColumnName="DayTwoWeather" />
+          <ScalarProperty Name="DayOneWeather" ColumnName="DayOneWeather" />
+          <ScalarProperty Name="DayFiveTemp" ColumnName="DayFiveTemp" />
+          <ScalarProperty Name="DayFourTemp" ColumnName="DayFourTemp" />
+          <ScalarProperty Name="DayThreeTemp" ColumnName="DayThreeTemp" />
+          <ScalarProperty Name="DayTwoTemp" ColumnName="DayTwoTemp" />
+          <ScalarProperty Name="DayOneTemp" ColumnName="DayOneTemp" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

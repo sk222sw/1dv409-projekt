@@ -1,4 +1,4 @@
-﻿@Model = WeatherApp.Models.Weather
+﻿@*@Model = WeatherApp.Models.Weather*@
 
 @{
     ViewBag.Title = "Home Page";
@@ -14,6 +14,9 @@
     {
         <div>
             @item.Temperature
+        </div>
+        <div>
+            <img src="http://openweathermap.org/img/w/@(item.Description).png" />
         </div>
     }
 

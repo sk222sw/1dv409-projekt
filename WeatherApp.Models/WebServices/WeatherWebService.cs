@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -11,18 +12,9 @@ namespace WeatherApp.Models.WebServices
 {
     public class WeatherWebService
     {
-        public void GetWeather(string city)
+        public IEnumerable<Weather> GetWeather(string city)
         {
-            string xml;
-
-
-
-            //string nummer = "5.5";
-            //double dec = Double.Parse(nummer);
-            ////var flo = Math.Round(dec);
-            ////int inn = Int32.Parse(flo);
-            //int i = Convert.ToInt32(dec);
-
+            var xml = String.Empty;
             var uriString = $"http://api.openweathermap.org/data/2.5/forecast?q={city}&mode=xml&appid=e14a7b8f35864e3466caaa2b1db332c2";
             var request = (HttpWebRequest)WebRequest.Create(uriString);
 
@@ -31,15 +23,19 @@ namespace WeatherApp.Models.WebServices
             {
                 xml = reader.ReadToEnd();
             }
-            var parsedXml = XDocument.Parse(xml);
 
-            var weather = (from time in parsedXml.Descendants("time")
-                           select new Weather
-                           {
-                               Date = DateTime.Parse(time.Element("from").ToString()),
-                               //Temperature = Convert.ToInt32(Double.Parse(time.Element("temperature").Value))
-                           }).ToList();
+            var doc = XDocument.Parse(xml);
+            var model = (from time in doc.Descendants("time")
+                         .Where(t => DateTime.Parse(t.Attribute("from").Value).Hour == 00)
+                         select new Weather
+                         {
+                             Date = DateTime.Parse(time.Attribute("from").Value),
+                             Temperature = Convert.ToInt32(double.Parse(time.Element("temperature").Attribute("value").Value, CultureInfo.InvariantCulture)),
+                             Description = time.Element("symbol").Attribute("var").Value
+                         })
+                         .ToList();
 
+            return model;
         }
     }
 }
