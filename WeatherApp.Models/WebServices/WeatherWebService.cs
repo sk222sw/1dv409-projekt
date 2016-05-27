@@ -12,7 +12,7 @@ namespace WeatherApp.Models.WebServices
 {
     public class WeatherWebService
     {
-        public IEnumerable<Weather> GetWeather(string city)
+        public Weather[] GetWeather(string city)
         {
             var xml = String.Empty;
             var uriString = $"http://api.openweathermap.org/data/2.5/forecast?q={city}&mode=xml&appid=e14a7b8f35864e3466caaa2b1db332c2";
@@ -33,7 +33,7 @@ namespace WeatherApp.Models.WebServices
                              Temperature = Convert.ToInt32(double.Parse(time.Element("temperature").Attribute("value").Value, CultureInfo.InvariantCulture)),
                              Description = time.Element("symbol").Attribute("var").Value
                          })
-                         .ToList();
+                         .ToArray();
 
             return model;
         }

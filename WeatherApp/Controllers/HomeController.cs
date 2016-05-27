@@ -17,7 +17,7 @@ namespace WeatherApp.Controllers
     public class HomeController : Controller
     {
         private WeatherAppEntities _context = new WeatherAppEntities();
-        private IRepository _repository = new EFRepository();
+        private IRepository _repository;
 
         public HomeController(IRepository repository)
         {
@@ -26,6 +26,9 @@ namespace WeatherApp.Controllers
 
         public ActionResult Index()
         {
+            var hej = new Forecast();
+            hej.DayOneTemp = 100;
+
             return View();
         }
 
@@ -35,26 +38,15 @@ namespace WeatherApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var city = model.Location;
-
-                var webService = new WeatherWebService();
-
-                var forecast = _repository.GetForecastByCity(city);
-
-                if (forecast == null)
-                {
-                    IEnumerable<Weather> weatherList = webService.GetWeather(city);
-                }
-                else
-                {
-
-                }
+                var location = model.Location;
+                var service = new WeatherService();
+                Forecast forecast = service.GetForecast(location);
 
                 return View("Forecast", forecast);
-
             }
             return View("Index");
         }
+
 
     }
 }
