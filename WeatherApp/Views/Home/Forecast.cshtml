@@ -1,0 +1,15 @@
+﻿@model WeatherApp.Models.Forecast
+
+@{
+    ViewBag.Title = "Forecast";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Forecast</h2>
+
+    <div>
+        @Model.DayTwoTemp
+    </div>
+        <div>
+            @*<img src="http://openweathermap.org/img/w/@(item.Description).png" />*@
+        </div>

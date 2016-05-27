@@ -26,18 +26,35 @@ namespace WeatherApp.Controllers
 
         public ActionResult Index()
         {
-            var city = "Kalmar";
-
-            var webService = new WeatherWebService();
-
-            // kolla om City finns i databasen
-            var forecast = _repository.GetForecastByCity(city);
-            //var forecasts = _repository.GetForecasts();
-
-            IEnumerable<Weather> weatherList = webService.GetWeather(city);
-
-
-            return View(weatherList);
+            return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index([Bind(Include = "Location")] Weather model)
+        {
+            if (ModelState.IsValid)
+            {
+                var city = model.Location;
+
+                var webService = new WeatherWebService();
+
+                var forecast = _repository.GetForecastByCity(city);
+
+                if (forecast == null)
+                {
+                    IEnumerable<Weather> weatherList = webService.GetWeather(city);
+                }
+                else
+                {
+
+                }
+
+                return View("Forecast", forecast);
+
+            }
+            return View("Index");
+        }
+
     }
 }

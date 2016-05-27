@@ -1,4 +1,4 @@
-﻿@*@Model = WeatherApp.Models.Weather*@
+﻿@model WeatherApp.Models.Weather
 
 @{
     ViewBag.Title = "Home Page";
@@ -10,14 +10,15 @@
 
 <div class="row">
     
-    @foreach (var item in Model)
+    @using (Html.BeginForm())
     {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
         <div>
-            @item.Temperature
+            @Html.LabelFor(m => m.Location)
         </div>
         <div>
-            <img src="http://openweathermap.org/img/w/@(item.Description).png" />
+            @Html.EditorFor(m => @m.Location)
         </div>
     }
-
 </div>
