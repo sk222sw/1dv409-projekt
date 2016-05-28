@@ -7,6 +7,18 @@ using WeatherApp.Models.WebServices;
 
 namespace WeatherApp.Models
 {
+    public enum ApiHour
+    {
+        twelveAM = 00,
+        threeAM = 03,
+        sixAM = 06,
+        nineAM = 09,
+        twelvePM = 12,
+        threePM = 15,
+        sixPM = 18,
+        ninePM = 21
+    }
+
     public class WeatherService
     {
         private WeatherWebService _webService = new WeatherWebService();
@@ -23,12 +35,30 @@ namespace WeatherApp.Models
             _repository = repository;
         }
 
+        // note: weatherList will contain six entries if the time has passed the hour value, but only five entries are used
         public Forecast newForecast(string location)
         {
-            // okay this got a bit messy :(
             var forecast = new Forecast();
             var weatherData = _webService.GetWeather(location);
-            forecast.DayOneTemp = weatherData[0].Temperature;
+            List<Weather> weatherList = new List<Weather>();
+            int hour = Convert.ToInt32(ApiHour.threePM);
+
+            // if the time passed the selected hour the first entry will be the first weather data from the api
+            if (weatherData[0].Date.Hour > hour)
+            {
+                weatherList.Add(weatherData[0]);
+            }
+
+            foreach (Weather weather in weatherData)
+            {
+                if (weather.Date.Hour == hour)
+                {
+                    weatherList.Add(weather);
+                }
+            }
+
+            // Should change the database to have forecast and weather so i can make this dynamic
+            forecast.DayOneTemp = weatherList[0].Temperature;
             forecast.DayOneWeather = weatherData[0].Description;
             forecast.DayTwoTemp = weatherData[1].Temperature;
             forecast.DayTwoWeather = weatherData[1].Description;

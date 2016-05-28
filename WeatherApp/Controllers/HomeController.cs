@@ -35,12 +35,12 @@ namespace WeatherApp.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                    var location = model.Location;
-                    var service = new WeatherService();
-                    Forecast forecast = service.GetForecast(location);
-                    TempData["success"] = "Yaaay här är vädret!";
-                    return View("Forecast", forecast);
+                // TODO try catch
+                var location = model.Location;
+                var service = new WeatherService();
+                Forecast forecast = service.GetForecast(location);
+                TempData["success"] = "Yaaay här är vädret!";
+                return View("Forecast", forecast);
 
             }
             return View("Index");
