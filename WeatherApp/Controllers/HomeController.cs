@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Xml.Linq;
 using WeatherApp.Models;
-using WeatherApp.Models.DataModels;
 using WeatherApp.Models.Repositories;
-using WeatherApp.Models.WebServices;
 
 namespace WeatherApp.Controllers
 {

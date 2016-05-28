@@ -1,18 +1,20 @@
-﻿@model WeatherApp.Models.Test
+﻿@model WeatherApp.Models.Weather
 
 @{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    @Model.Greet Dude
-</div>
-
 <div class="row">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-    </div>
+    
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+        <div>
+            @Html.LabelFor(m => m.Location)
+        </div>
+        <div>
+            @Html.EditorFor(m => @m.Location)
+        </div>
+    }
 </div>

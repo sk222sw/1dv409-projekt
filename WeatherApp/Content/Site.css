@@ -3,6 +3,33 @@
     padding-bottom: 20px;
 }
 
+/****************/
+/* weather stuff*/
+/****************/
+
+.weather-container {
+    text-align: center;
+    width: 620px;
+    margin: 0 auto;
+    margin: 0 auto;
+}
+
+.weather {
+    margin: 0 auto; 
+    padding: 5px; 
+    border: solid rgba(0, 0, 0, 0.1) 1px;
+    display: inline-block;
+    width: 120px;
+}
+
+.weather-day {
+    font-size: 1.4em;
+}
+
+.weather-temperature {
+    font-size: 1.2em;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -22,3 +49,4 @@ select,
 textarea {
     max-width: 280px;
 }
+

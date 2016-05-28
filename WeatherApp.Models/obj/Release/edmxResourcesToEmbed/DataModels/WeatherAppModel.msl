@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WeatherModelStoreContainer" CdmEntityContainer="WeatherAppEntities">
+    <EntitySetMapping Name="Forecasts">
+      <EntityTypeMapping TypeName="WeatherModel.Forecast">
+        <MappingFragment StoreEntitySet="Forecast">
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="DayFiveWeather" ColumnName="DayFiveWeather" />
+          <ScalarProperty Name="DayFourWeather" ColumnName="DayFourWeather" />
+          <ScalarProperty Name="DayThreeWeather" ColumnName="DayThreeWeather" />
+          <ScalarProperty Name="DayTwoWeather" ColumnName="DayTwoWeather" />
+          <ScalarProperty Name="DayOneWeather" ColumnName="DayOneWeather" />
+          <ScalarProperty Name="DayFiveTemp" ColumnName="DayFiveTemp" />
+          <ScalarProperty Name="DayFourTemp" ColumnName="DayFourTemp" />
+          <ScalarProperty Name="DayThreeTemp" ColumnName="DayThreeTemp" />
+          <ScalarProperty Name="DayTwoTemp" ColumnName="DayTwoTemp" />
+          <ScalarProperty Name="DayOneTemp" ColumnName="DayOneTemp" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
