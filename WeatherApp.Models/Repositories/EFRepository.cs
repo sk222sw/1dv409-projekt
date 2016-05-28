@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WeatherApp.Models.DataModels;
 
 namespace WeatherApp.Models.Repositories
 {
-    public class EFRepository : IRepository, IDisposable
+    public class EFRepository : IRepository
     {
         private WeatherAppEntities _context = new WeatherAppEntities();
 
@@ -17,10 +18,29 @@ namespace WeatherApp.Models.Repositories
 
         public Forecast GetForecastByCity(string city)
         {
-            var f = (from item in _context.Forecasts
+            return (from item in _context.Forecasts
                      where item.City == city
-                     select item).AsQueryable().FirstOrDefault();
-            return f;
+                     select item)
+                     .AsQueryable()
+                     .FirstOrDefault();
+        }
+
+        public void UpdateForecast(Forecast forecast)
+        {
+            if (_context.Entry(forecast).State == EntityState.Detached)
+            {
+                _context.Forecasts.Attach(forecast);
+            }
+            _context.Entry(forecast).State = EntityState.Modified;
+        }
+
+        public void DeleteForecast(Forecast forecast)
+        {
+            if (_context.Entry(forecast).State == EntityState.Detached)
+            {
+                _context.Forecasts.Attach(forecast);
+            }
+            _context.Forecasts.Remove(forecast); // changing entitystate to Deleted is done by the remove method
         }
 
         public void InsertForecast(Forecast forecast)

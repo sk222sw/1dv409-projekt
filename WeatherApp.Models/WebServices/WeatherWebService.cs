@@ -26,7 +26,7 @@ namespace WeatherApp.Models.WebServices
 
             var doc = XDocument.Parse(xml);
             var model = (from time in doc.Descendants("time")
-                         .Where(t => DateTime.Parse(t.Attribute("from").Value).Hour == 00)
+                         .Where(t => DateTime.Parse(t.Attribute("from").Value).Hour == 15)
                          select new Weather
                          {
                              Date = DateTime.Parse(time.Attribute("from").Value),

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,6 @@ namespace WeatherApp.Controllers
 {
     public class HomeController : Controller
     {
-        private WeatherAppEntities _context = new WeatherAppEntities();
         private IRepository _repository;
 
         public HomeController(IRepository repository)
@@ -26,9 +26,6 @@ namespace WeatherApp.Controllers
 
         public ActionResult Index()
         {
-            var hej = new Forecast();
-            hej.DayOneTemp = 100;
-
             return View();
         }
 
@@ -38,15 +35,24 @@ namespace WeatherApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var location = model.Location;
-                var service = new WeatherService();
-                Forecast forecast = service.GetForecast(location);
 
-                return View("Forecast", forecast);
+                    var location = model.Location;
+                    var service = new WeatherService();
+                    Forecast forecast = service.GetForecast(location);
+                    TempData["success"] = "Yaaay här är vädret!";
+                    return View("Forecast", forecast);
+
             }
             return View("Index");
         }
 
-
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _repository.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

@@ -23,27 +23,39 @@ namespace WeatherApp.Models
             _repository = repository;
         }
 
+        public Forecast newForecast(string location)
+        {
+            // okay this got a bit messy :(
+            var forecast = new Forecast();
+            var weatherData = _webService.GetWeather(location);
+            forecast.DayOneTemp = weatherData[0].Temperature;
+            forecast.DayOneWeather = weatherData[0].Description;
+            forecast.DayTwoTemp = weatherData[1].Temperature;
+            forecast.DayTwoWeather = weatherData[1].Description;
+            forecast.DayThreeTemp = weatherData[2].Temperature;
+            forecast.DayThreeWeather = weatherData[2].Description;
+            forecast.DayFourTemp = weatherData[3].Temperature;
+            forecast.DayFourWeather = weatherData[3].Description;
+            forecast.DayFiveTemp = weatherData[4].Temperature;
+            forecast.DayFiveWeather = weatherData[4].Description;
+            forecast.City = location;
+            forecast.LastUpdate = DateTime.Now;
+            return forecast;
+        }
+
         public Forecast GetForecast(string location)
         {
             var forecast = _repository.GetForecastByCity(location);
             if (forecast == null)
             {
-                // okay this got a bit messy :(
-                forecast = new Forecast();
-                var weatherList = _webService.GetWeather(location);
-                forecast.DayOneTemp = weatherList[0].Temperature;
-                forecast.DayOneWeather = weatherList[0].Description;
-                forecast.DayTwoTemp = weatherList[1].Temperature;
-                forecast.DayTwoWeather = weatherList[1].Description;
-                forecast.DayThreeTemp = weatherList[2].Temperature;
-                forecast.DayThreeWeather = weatherList[2].Description;
-                forecast.DayFourTemp = weatherList[3].Temperature;
-                forecast.DayFourWeather = weatherList[3].Description;
-                forecast.DayFiveTemp = weatherList[4].Temperature;
-                forecast.DayFiveWeather = weatherList[4].Description;
-                forecast.City = location;
-                forecast.LastUpdate = DateTime.Now;
+                forecast = newForecast(location);
                 _repository.InsertForecast(forecast);
+                _repository.Save();
+            }
+            else if (forecast.ShouldUpdate())
+            {
+                forecast = newForecast(location);
+                _repository.UpdateForecast(forecast);
                 _repository.Save();
             }
             return forecast;
