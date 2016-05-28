@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using WeatherApp.Models.Repositories;
@@ -40,6 +41,10 @@ namespace WeatherApp.Models
         {
             var forecast = new Forecast();
             var weatherData = _webService.GetWeather(location);
+            if (weatherData == null)
+            {
+                return null;
+            }
             List<Weather> weatherList = new List<Weather>();
             int hour = Convert.ToInt32(ApiHour.threePM);
 
@@ -57,7 +62,7 @@ namespace WeatherApp.Models
                 }
             }
 
-            // Should change the database to have forecast and weather so i can make this dynamic
+            // Should change the database to have forecast and weather tables so i can make this dynamic
             forecast.DayOneTemp = weatherList[0].Temperature;
             forecast.DayOneWeather = weatherData[0].Description;
             forecast.DayTwoTemp = weatherData[1].Temperature;
@@ -78,9 +83,16 @@ namespace WeatherApp.Models
             var forecast = _repository.GetForecastByCity(location);
             if (forecast == null)
             {
-                forecast = newForecast(location);
-                _repository.InsertForecast(forecast);
-                _repository.Save();
+                try
+                {
+                    forecast = newForecast(location);
+                    _repository.InsertForecast(forecast);
+                    _repository.Save();
+                }
+                catch (Exception)
+                {
+                    throw new DataException();
+                }
             }
             else if (forecast.ShouldUpdate())
             {

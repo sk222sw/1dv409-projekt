@@ -7,9 +7,54 @@
 
 <h2>Forecast</h2>
 
+@if (Model != null)
+{
+    <h3>@Model.City</h3>
+    <div>
+        Today
+    </div>
+    <div>
+        @Model.DayOneTemp
+    </div>
+    <div>
+        <img src="http://openweathermap.org/img/w/@(Model.DayOneWeather).png" />
+    </div>
+    <div>
+        Tomorrow
+    </div>
     <div>
         @Model.DayTwoTemp
     </div>
-        <div>
-            @*<img src="http://openweathermap.org/img/w/@(item.Description).png" />*@
-        </div>
+    <div>
+        <img src="http://openweathermap.org/img/w/@(Model.DayTwoWeather).png" />
+    </div>
+    <div>
+        @DateTime.Now.AddDays(2).DayOfWeek
+    </div>
+    <div>
+        @Model.DayThreeTemp
+    </div>
+    <div>
+        <img src="http://openweathermap.org/img/w/@(Model.DayThreeWeather).png" />
+    </div>
+    <div>
+        @DateTime.Now.AddDays(3).DayOfWeek
+    </div>
+    <div>
+        @Model.DayFourTemp
+    </div>
+    <div>
+        <img src="http://openweathermap.org/img/w/@(Model.DayFourWeather).png" />
+    </div>
+    <div>
+        @DateTime.Now.AddDays(4).DayOfWeek
+    </div>
+    <div>
+        @Model.DayFiveTemp
+    </div>
+    <div>
+        <img src="http://openweathermap.org/img/w/@(Model.DayFiveWeather).png" />
+    </div>
+}
+
+@Html.ActionLink("Go back", "Index")

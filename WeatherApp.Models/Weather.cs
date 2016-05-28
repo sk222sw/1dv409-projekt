@@ -11,6 +11,7 @@ namespace WeatherApp.Models
     {
         [DisplayName("Location")]
         [Required(ErrorMessage = "Enter a location")]
+        [RegularExpression("^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$", ErrorMessage = "Enter a valid location.")]
         public string Location { get; set; }
         public int Temperature { get; set; }
         public string Description { get; set; }
