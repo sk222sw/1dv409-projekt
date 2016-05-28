@@ -54,7 +54,20 @@ namespace WeatherApp.Models
             }
             else if (forecast.ShouldUpdate())
             {
-                forecast = newForecast(location);
+                var fc = newForecast(location);
+
+                forecast.DayOneTemp = fc.DayOneTemp;
+                forecast.DayOneWeather = fc.DayOneWeather;
+                forecast.DayTwoTemp = fc.DayTwoTemp;
+                forecast.DayTwoWeather = fc.DayTwoWeather;
+                forecast.DayThreeTemp = fc.DayThreeTemp;
+                forecast.DayThreeWeather = fc.DayThreeWeather;
+                forecast.DayFourTemp = fc.DayFourTemp;
+                forecast.DayFourWeather = fc.DayFourWeather;
+                forecast.DayFiveTemp = fc.DayFiveTemp;
+                forecast.DayFiveWeather = fc.DayFiveWeather;
+                forecast.LastUpdate = DateTime.Now;
+
                 _repository.UpdateForecast(forecast);
                 _repository.Save();
             }

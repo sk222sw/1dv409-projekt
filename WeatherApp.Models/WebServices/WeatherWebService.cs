@@ -24,7 +24,10 @@ namespace WeatherApp.Models.WebServices
                 xml = reader.ReadToEnd();
             }
 
+
+
             var doc = XDocument.Parse(xml);
+            //var doc = XDocument.Load("C:/Users/Sonny/Documents/visual studio 2015/Projects/WeatherApp/WeatherApp/App_Data/data.xml");
             var model = (from time in doc.Descendants("time")
                          .Where(t => DateTime.Parse(t.Attribute("from").Value).Hour == 15)
                          select new Weather
