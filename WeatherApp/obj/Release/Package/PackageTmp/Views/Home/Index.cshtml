@@ -1,20 +1,21 @@
 ﻿@model WeatherApp.Models.Weather
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Weather app";
 }
 
-<div class="row">
+<div class="row index">
     
     @using (Html.BeginForm())
     {
         @Html.ValidationSummary()
         @Html.AntiForgeryToken()
         <div>
-            @Html.LabelFor(m => m.Location)
+            Enter a location
         </div>
         <div>
             @Html.EditorFor(m => @m.Location)
+            <input type="submit" value="Get forecast" />
         </div>
     }
 </div>

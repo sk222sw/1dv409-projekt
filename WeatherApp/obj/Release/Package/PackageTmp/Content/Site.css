@@ -30,6 +30,17 @@
     font-size: 1.2em;
 }
 
+.index {
+    text-align: center;
+}
+
+.error-flash, .validation-summary-errors {
+    background: red;
+    color: white;
+    list-style-type: none;
+    list-style: none;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
