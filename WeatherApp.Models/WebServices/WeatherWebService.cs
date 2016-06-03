@@ -27,8 +27,6 @@ namespace WeatherApp.Models.WebServices
                 }
                 var doc = XDocument.Parse(xml);
 
-                //var doc = XDocument.Load("C:/Users/Sonny/Documents/visual studio 2015/Projects/WeatherApp/WeatherApp/App_Data/data.xml");
-
                 var model = (from time in doc.Descendants("time")
                              select new Weather
                              {

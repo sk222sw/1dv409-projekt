@@ -37,14 +37,16 @@ namespace WeatherApp.Models
         }
 
         // note: weatherList will contain six entries if the time has passed the hour value, but only five entries are used
-        public Forecast newForecast(string location)
+        public Location newLocation(string location)
         {
-            var forecast = new Forecast();
+            var loc = new Location();
+            loc.Location1 = location;
             var weatherData = _webService.GetWeather(location);
             if (weatherData == null)
             {
                 return null;
             }
+
             List<Weather> weatherList = new List<Weather>();
             int hour = Convert.ToInt32(ApiHour.threePM);
 
@@ -58,35 +60,23 @@ namespace WeatherApp.Models
             {
                 if (weather.Date.Hour == hour)
                 {
-                    weatherList.Add(weather);
+                    loc.Weathers.Add(weather);
                 }
             }
-
-            // Should change the database to have forecast and weather tables so i can make this dynamic
-            forecast.DayOneTemp = weatherList[0].Temperature;
-            forecast.DayOneWeather = weatherData[0].Description;
-            forecast.DayTwoTemp = weatherData[1].Temperature;
-            forecast.DayTwoWeather = weatherData[1].Description;
-            forecast.DayThreeTemp = weatherData[2].Temperature;
-            forecast.DayThreeWeather = weatherData[2].Description;
-            forecast.DayFourTemp = weatherData[3].Temperature;
-            forecast.DayFourWeather = weatherData[3].Description;
-            forecast.DayFiveTemp = weatherData[4].Temperature;
-            forecast.DayFiveWeather = weatherData[4].Description;
-            forecast.City = location;
-            forecast.LastUpdate = DateTime.Now;
-            return forecast;
+            loc.LastUpdate = DateTime.Now;
+            return loc;
         }
 
-        public Forecast GetForecast(string location)
+        public Location GetForecast(string location)
         {
-            var forecast = _repository.GetForecastByCity(location);
-            if (forecast == null)
+            var loc = _repository.GetLocationByName(location);
+            if (loc == null)
             {
                 try
                 {
-                    forecast = newForecast(location);
-                    _repository.InsertForecast(forecast);
+                    loc = newLocation(location);
+
+                    _repository.InsertLocation(loc);
                     _repository.Save();
                 }
                 catch (Exception)
@@ -94,26 +84,12 @@ namespace WeatherApp.Models
                     throw new DataException();
                 }
             }
-            else if (forecast.ShouldUpdate())
+            else if (loc.ShouldUpdate())
             {
-                var fc = newForecast(location);
-
-                forecast.DayOneTemp = fc.DayOneTemp;
-                forecast.DayOneWeather = fc.DayOneWeather;
-                forecast.DayTwoTemp = fc.DayTwoTemp;
-                forecast.DayTwoWeather = fc.DayTwoWeather;
-                forecast.DayThreeTemp = fc.DayThreeTemp;
-                forecast.DayThreeWeather = fc.DayThreeWeather;
-                forecast.DayFourTemp = fc.DayFourTemp;
-                forecast.DayFourWeather = fc.DayFourWeather;
-                forecast.DayFiveTemp = fc.DayFiveTemp;
-                forecast.DayFiveWeather = fc.DayFiveWeather;
-                forecast.LastUpdate = DateTime.Now;
-
-                _repository.UpdateForecast(forecast);
+                _repository.UpdateLocation(loc);
                 _repository.Save();
             }
-            return forecast;
+            return loc;
         }
     }
 }

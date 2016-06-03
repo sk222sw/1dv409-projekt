@@ -6,6 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="fc9b4219c65148eda099a1a30b7fd548" Name="Diagram1">
         <EntityTypeShape EntityType="WeatherModel.Forecast" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WeatherModel.Location" Width="1.5" PointX="3.375" PointY="1.125" />
+        <EntityTypeShape EntityType="WeatherModel.Weather" Width="1.5" PointX="5.625" PointY="0.875" />
+        <AssociationConnector Association="WeatherModel.FK_Weather_Location" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

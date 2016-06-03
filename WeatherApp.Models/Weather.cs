@@ -7,12 +7,13 @@ using System.Web;
 
 namespace WeatherApp.Models
 {
-    public class Weather
+    [MetadataType(typeof(Weather_MetaData))]
+    public partial class Weather
     {
-        [DisplayName("Location")]
-        [Required(ErrorMessage = "Enter a location")]
-        [RegularExpression("^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$", ErrorMessage = "Enter a valid location.")]
-        public string Location { get; set; }
+    }
+
+    internal class Weather_MetaData
+    {
         public int Temperature { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }

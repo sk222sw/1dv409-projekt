@@ -1,4 +1,4 @@
-﻿@model WeatherApp.Models.Forecast
+﻿@model WeatherApp.ViewModels.ViewModel
 
 @{
     ViewBag.Title = "Forecast";
@@ -7,66 +7,10 @@
 
 @if (Model != null)
 {
-    <div class="weather-container">
-        <h2>@Model.City</h2>
-
-        <div class="weather">
-            <div class="weather-day">
-                Today
-            </div>
-            <div class="weather-temperature">
-                @Model.DayOneTemp°C
-            </div>
-            <div class="weather-description">
-                <img src="http://openweathermap.org/img/w/@(Model.DayOneWeather).png" />
-            </div>
-        </div>
-        <div class="weather">
-            <div class="weather-day">
-                Tomorrow
-            </div>
-            <div class="weather-temperature">
-                @Model.DayTwoTemp°C
-            </div>
-            <div class="weather-description">
-                <img src="http://openweathermap.org/img/w/@(Model.DayTwoWeather).png" />
-            </div>
-        </div>
-        <div class="weather">
-            <div class="weather-day">
-                @DateTime.Now.AddDays(2).DayOfWeek
-            </div>
-            <div class="weather-temperature">
-                @Model.DayThreeTemp°C
-            </div>
-            <div class="weather-description">
-                <img src="http://openweathermap.org/img/w/@(Model.DayThreeWeather).png" />
-            </div>
-        </div>
-        <div class="weather">
-            <div class="weather-day">
-                @DateTime.Now.AddDays(3).DayOfWeek
-            </div>
-            <div class="weather-temperature">
-                @Model.DayFourTemp°C
-            </div>
-            <div class="weather-description">
-                <img src="http://openweathermap.org/img/w/@(Model.DayFourWeather).png" />
-            </div>
-        </div>
-        <div class="weather">
-            <div class="weather-day">
-                @DateTime.Now.AddDays(4).DayOfWeek
-            </div>
-            <div class="weather-temperature">
-                @Model.DayFiveTemp°C
-            </div>
-            <div class="weather-description">
-                <img src="http://openweathermap.org/img/w/@(Model.DayFiveWeather).png" />
-            </div>
-        </div>
-
-    </div>
+    <h2>
+        Forecast for @Model.Location
+    </h2>
+    @Html.Raw(@Model.GetWeatherList())
 }
 <div>
     @Html.ActionLink("Go back", "Index")

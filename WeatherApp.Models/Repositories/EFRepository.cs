@@ -11,41 +11,41 @@ namespace WeatherApp.Models.Repositories
     {
         private WeatherAppEntities _context = new WeatherAppEntities();
 
-        public IEnumerable<Forecast> GetForecasts()
+        public IEnumerable<Location> GetLocations()
         {
-            return _context.Forecasts.ToList();
+            return _context.Locations.ToList();
         }
 
-        public Forecast GetForecastByCity(string city)
+        public Location GetLocationByName(string location)
         {
-            return (from item in _context.Forecasts
-                     where item.City == city
+            return (from item in _context.Locations
+                     where item.Location1 == location
                      select item)
                      .AsQueryable()
                      .FirstOrDefault();
         }
 
-        public void UpdateForecast(Forecast forecast)
+        public void UpdateLocation(Location location)
         {
-            if (_context.Entry(forecast).State == EntityState.Detached)
+            if (_context.Entry(location).State == EntityState.Detached)
             {
-                _context.Forecasts.Attach(forecast);
+                _context.Locations.Attach(location);
             }
-            _context.Entry(forecast).State = EntityState.Modified;
+            _context.Entry(location).State = EntityState.Modified;
         }
 
-        public void DeleteForecast(Forecast forecast)
+        public void DeleteLocation(Location location)
         {
-            if (_context.Entry(forecast).State == EntityState.Detached)
+            if (_context.Entry(location).State == EntityState.Detached)
             {
-                _context.Forecasts.Attach(forecast);
+                _context.Locations.Attach(location);
             }
-            _context.Forecasts.Remove(forecast); // changing entitystate to Deleted is done by the remove method
+            _context.Locations.Remove(location); // changing entitystate to Deleted is done by the remove method
         }
 
-        public void InsertForecast(Forecast forecast)
+        public void InsertLocation(Location location)
         {
-            _context.Forecasts.Add(forecast);
+            _context.Locations.Add(location);
         }
 
         public void Save()

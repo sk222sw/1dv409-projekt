@@ -26,5 +26,7 @@ namespace WeatherApp.Models.DataModels
         }
     
         public virtual DbSet<Forecast> Forecasts { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<Weather> Weathers { get; set; }
     }
 }

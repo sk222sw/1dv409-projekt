@@ -6,11 +6,11 @@ namespace WeatherApp.Models.Repositories
 {
     public interface IRepository : IDisposable
     {
-        IEnumerable<Forecast> GetForecasts();
-        Forecast GetForecastByCity(string city);
-        void InsertForecast(Forecast forecast);
-        void UpdateForecast(Forecast forecast);
-        void DeleteForecast(Forecast forecast);
+        IEnumerable<Location> GetLocations();
+        Location GetLocationByName(string location);
+        void InsertLocation(Location location);
+        void UpdateLocation(Location location);
+        void DeleteLocation(Location location);
         void Save();
     }
 }
